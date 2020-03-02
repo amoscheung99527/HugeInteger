@@ -238,40 +238,13 @@ public class HugeInteger {
             mul = "0";
         }
         
+        if(this.hugeInt.charAt(0) == '0'){
+            mul = "0";
+        }
+        
         return new HugeInteger(mul);
     }
     
-    public HugeInteger divide(HugeInteger h){
-        String div ="0";
-        HugeInteger remain = this.absolute();
-        HugeInteger remain2 = h.absolute();
-        int increment = 0;
-        
-        if(h.hugeInt.charAt(0) == '0'){
-            throw new StringIndexOutOfBoundsException("Can't divide by 0");
-        }
-        
-        else if(this.compareTo(h)==0){
-            div = "1";
-        }
-        
-        else if(this.absolute().compareTo(h.absolute())==-1){
-            div= "0";
-        }
-        
-        else {
-            while (remain.compareTo(remain2)==1 || remain.compareTo(remain2)==0){
-                increment++;
-                remain = remain.subtract(remain2);
-            }
-            div= String.valueOf(increment);
-            if(this.sign!=h.sign){
-            div = "-" + div;
-            }
-        }
-        
-        return new HugeInteger(div);
-    }
     
     public int compareTo(HugeInteger h){
         if (this.sign!=h.sign){
